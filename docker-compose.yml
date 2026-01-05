@@ -1,0 +1,24 @@
+version: "3,.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "4000:4000"
+    networks:
+      - fullstack-net
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "5173:3000"
+    networks:
+      - fullstack-net
+    restart: unless-stopped
+networks:
+  fullstack-net:
+    driver: bridge
+
